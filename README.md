@@ -1,11 +1,11 @@
 # ARRETADO 2.0 — Projetos 1 e 2
 
-Linguagem esotérica de propósito geral **didático**, inspirada na cultura nordestina. Programas `.arr` são traduzidos para Python 3.10+ pelo `tradutor.py`.
+Linguagem esotérica de propósito geral **didático**, inspirada na cultura nordestina. Programas `.arr` são traduzidos para Python 3.10+ pelo `tradutor.py`. Documentação completa em `docs/`: `linguagem.md` (especificação), `projeto1.md` e `projeto2.md` (programas e execução).
 
 ## Instalação
 
-1. Instale Python 3.10+ em https://www.python.org/downloads/ e VS Code em https://code.visualstudio.com/.
-2. Extraia o ZIP, abra a pasta `ARRETADO` no VS Code e abra **Terminal > Novo Terminal**.
+1. Instale Python 3.10+ em https://www.python.org/downloads/. VS Code em https://code.visualstudio.com/ é opcional (só editor); basta Python + terminal.
+2. Extraia o ZIP, abra um terminal na pasta `ARRETADO` (no VS Code: **Terminal > Novo Terminal**).
 3. Verifique `python --version` (Windows também pode usar `py --version`).
 4. Teste tudo: `python testar_tudo.py`.
 
@@ -37,6 +37,10 @@ python gerados/05_crud_json.py
 
 O programa CRUD cria `registros.json` no diretório **atual de execução** e mantém a lista quando aberto novamente. Para apagar os dados de teste, exclua o arquivo `registros.json`.
 
+## Pasta `gerados/`
+
+A pasta `gerados/` vem vazia no repositório: ela guarda apenas arquivos produzidos pelo `tradutor.py` e por isso não é versionada. Gere localmente com `python tradutor.py <fonte.arr> -o gerados/<nome.py>` ou rodando `python testar_tudo.py`.
+
 ## Sintaxe resumida
 
 - `OXENTE` e `CABOU`: início/fim obrigatórios, únicos.
@@ -53,6 +57,8 @@ O programa CRUD cria `registros.json` no diretório **atual de execução** e ma
 - `JSON_CARREGA variavel "arquivo.json"`: lê dados ou retorna lista vazia se o arquivo não existir.
 - `JSON_SALVA "arquivo.json" variavel`: grava em formato JSON.
 - Expressões incluem inteiros, decimais, textos, booleanos, listas, índices, `+ - * / // %`, comparações, `and or not` e funções nativas da ARRETADO `TAMANHO()`, `TEXTO()`, `NUMERO()`.
+- Identificadores podem usar nomes que colidem com o Python (`class, def, print, len, True, ...`): o tradutor renomeia no `.py` gerado (`class` vira `arr_class`). Exceções: `and/or/not` são operadores lógicos da linguagem e não podem ser nomes; o prefixo `arr_` é reservado ao tradutor.
+- Arquivos só via `JSON_CARREGA`/`JSON_SALVA`. O fonte `.arr` nunca usa `open()`; o runtime gerado usa `read_text`/`write_text`.
 
 ## Limitações
 
@@ -65,7 +71,7 @@ O programa CRUD cria `registros.json` no diretório **atual de execução** e ma
 
 ## Entrega
 
-O trabalho original solicita documentação, tradutor, fontes dos programas e instruções. Utilize também o PDF `Manual_Completo_ARRETADO_Projetos_1_e_2.pdf`.
+O trabalho original solicita documentação, tradutor, fontes dos programas e instruções. A documentação oficial está em `docs/` (markdown versionado); não há mais PDF manual no repositório.
 
 ## Execução no Windows (acentos e UTF-8)
 
